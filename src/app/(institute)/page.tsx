@@ -85,7 +85,7 @@ export default function HomePage() {
               <p className="animate-fade-up stagger-3 mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{hero.description}</p>
               <div className="animate-fade-up stagger-4 mt-8 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href={hero.primary.href}>{hero.primary.label}</ButtonLink>
-                <ButtonLink href={hero.secondary.href} newTab={hero.secondary.newTab} variant="outline-light">
+                <ButtonLink href={hero.secondary.href} newTab={hero.secondary.newTab} variant="light">
                   {hero.secondary.label}
                 </ButtonLink>
               </div>

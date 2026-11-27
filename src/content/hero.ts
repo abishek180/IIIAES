@@ -29,6 +29,13 @@ export const instituteHero: HeroContent = {
       cta: { label: "Academics", href: "/academics" },
     },
     {
+      media: { type: "image", src: "/images/campus/acupuncture-practice.jpg", alt: "A practitioner placing acupuncture needles on a patient's wrist", focus: "center 60%" },
+      caption: "Acupuncture practice",
+      title: "Precision in every point",
+      text: "Learn point location and needling technique under expert supervision.",
+      cta: { label: "Explore courses", href: "/courses" },
+    },
+    {
       media: { type: "image", src: "/images/stock/acupuncture-treatment.jpg", alt: "Supervised practical acupuncture session" },
       caption: "Hands-on practice",
       title: "Practice from the first term",
