@@ -67,10 +67,10 @@ export default async function AcademyPage({ params }: PageProps<"/academies/[slu
         <Container>
           <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
             <Photo src={academy.image ?? "/images/stock/kerala-building.jpg"} label="Campus" sizes="(min-width:1024px) 50vw, 100vw" className="col-span-2 aspect-[16/10] lg:row-span-2 lg:aspect-auto" />
-            <Photo src="/images/stock/students-writing.jpg" label="Classroom" sizes="25vw" className="aspect-square" />
-            <Photo src="/images/stock/acupuncture-treatment.jpg" label="Practical space" sizes="25vw" className="aspect-square" />
+            <Photo src="/images/campus/study-hall.jpg" label="Study hall" sizes="25vw" className="aspect-square" />
+            <Photo src="/images/campus/consultation-room.jpg" label="Consultation room" sizes="25vw" className="aspect-square" />
             <Photo src="/images/stock/library-shelves.jpg" label="Library" sizes="25vw" className="aspect-square" />
-            <Photo src="/images/stock/onam-celebration.jpg" label="Events" sizes="25vw" className="aspect-square" />
+            <Photo src="/images/stock/certificate-day.jpg" label="Events" sizes="25vw" className="aspect-square" />
           </div>
           <h2 className="mt-16 font-display text-3xl font-medium tracking-tight text-ink-950">Approved programmes</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

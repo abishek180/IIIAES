@@ -16,7 +16,7 @@ export const academies: Academy[] = [
     courses: ["bsc-acupuncture-science", "diploma-in-acupuncture", "pg-diploma-clinical-acupuncture", "certificate-in-acupressure"],
     status: "Active",
     flagship: true,
-    image: "/images/stock/kerala-campus-palms.jpg",
+    image: "/images/campus/iiiaes-campus.jpg",
     website: "/mukkam",
   },
   {
@@ -28,7 +28,7 @@ export const academies: Academy[] = [
     summary: "Placeholder profile to demonstrate the directory layout. Replace with a verified affiliated academy.",
     courses: ["diploma-in-acupuncture", "certificate-in-acupressure"],
     status: "Verification pending",
-    image: "/images/stock/students-writing.jpg",
+    image: "/images/campus/consultation-room.jpg",
   },
   {
     slug: "sample-academy-thrissur",
@@ -39,7 +39,7 @@ export const academies: Academy[] = [
     summary: "Placeholder profile to demonstrate the directory layout. Replace with a verified affiliated academy.",
     courses: ["certificate-in-acupressure"],
     status: "Verification pending",
-    image: "/images/stock/kerala-building.jpg",
+    image: "/images/campus/study-hall.jpg",
   },
 ];
 
@@ -66,14 +66,16 @@ export const downloads: DownloadItem[] = [
 
 /** Placeholders until authentic photography is supplied (add `src` to show the real image). */
 export const gallery: GalleryItem[] = [
-  { title: "Campus entrance", category: "Campus", shape: "wide", src: "/images/stock/kerala-building.jpg" },
+  { title: "Campus entrance", category: "Campus", shape: "wide", src: "/images/campus/iiiaes-campus.jpg" },
   { title: "Practical session", category: "Academic", shape: "tall", src: "/images/stock/acupuncture-treatment.jpg" },
-  { title: "Lecture hall", category: "Campus", shape: "square", src: "/images/stock/students-writing.jpg" },
+  { title: "Study hall", category: "Campus", shape: "square", src: "/images/campus/study-hall.jpg" },
   { title: "Clinical training", category: "Clinical", shape: "square", src: "/images/stock/acupuncture-needles.jpg" },
   { title: "Practical lab", category: "Clinical", shape: "tall", src: "/images/stock/anatomy-model.jpg" },
   { title: "Annual workshop", category: "Events", shape: "tall", src: "/images/stock/seminar-speaker.jpg" },
   { title: "Library", category: "Campus", shape: "square", src: "/images/stock/library-reading.jpg" },
   { title: "Faculty demonstration", category: "Academic", shape: "wide", src: "/images/stock/classroom-teacher.jpg" },
   { title: "Certificate day", category: "Events", shape: "square", src: "/images/stock/certificate-day.jpg" },
-  { title: "Onam celebration", category: "Events", shape: "wide", src: "/images/stock/onam-celebration.jpg" },
+  { title: "Campus grounds", category: "Campus", shape: "wide", src: "/images/stock/kerala-building.jpg" },
+  { title: "Consultation room", category: "Clinical", shape: "wide", src: "/images/campus/consultation-room.jpg" },
+  { title: "Classroom learning", category: "Academic", shape: "wide", src: "/images/stock/students-writing.jpg" },
 ];

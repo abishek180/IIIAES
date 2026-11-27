@@ -147,3 +147,32 @@
 @utility animate-hero-progress {
   animation: hero-progress linear forwards;
 }
+
+/* Gentle float for hero glass cards */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@utility animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+/* Staggered entrance helpers */
+@utility stagger-1 {
+  animation-delay: 120ms;
+}
+@utility stagger-2 {
+  animation-delay: 240ms;
+}
+@utility stagger-3 {
+  animation-delay: 360ms;
+}
+@utility stagger-4 {
+  animation-delay: 480ms;
+}

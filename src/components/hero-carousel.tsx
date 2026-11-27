@@ -20,7 +20,7 @@ const CarouselContext = createContext<CarouselState | null>(null);
 
 const overlays = {
   light:
-    "bg-gradient-to-b from-paper/95 via-paper/85 to-paper/60 lg:bg-gradient-to-r lg:from-paper lg:via-paper/85 lg:to-paper/0",
+    "bg-gradient-to-b from-paper/90 via-paper/75 to-paper/45 lg:bg-gradient-to-r lg:from-paper/95 lg:via-paper/60 lg:to-paper/0",
   dark: "bg-gradient-to-t from-ink-950/95 via-ink-950/60 to-ink-950/25 lg:bg-gradient-to-r lg:from-ink-950/90 lg:via-ink-950/55 lg:to-ink-950/5",
 };
 
@@ -48,6 +48,27 @@ export function HeroCarousel({
   // Only the first slide loads with the page; the rest load once the browser is idle (better LCP on mobile).
   const [ready, setReady] = useState(false);
   const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  const layer = useRef<HTMLDivElement>(null);
+
+  // Subtle scroll parallax: the media drifts slower than the page for depth (skipped for reduced motion).
+  useEffect(() => {
+    const el = layer.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = Math.min(window.scrollY, 600) * 0.15;
+      el.style.transform = `translate3d(0, ${y}px, 0)`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
     if (slides.length < 2) return;
@@ -92,7 +113,7 @@ export function HeroCarousel({
 
   return (
     <section className={cn("relative isolate overflow-hidden", className)}>
-      <div className="absolute inset-0 -z-10" aria-hidden={slides.length > 1 ? undefined : true}>
+      <div ref={layer} className="absolute inset-x-0 -top-[6%] -z-10 h-[112%] will-change-transform" aria-hidden={slides.length > 1 ? undefined : true}>
         {slides.map((slide, i) => {
           const active = i === index;
           const { media } = slide;

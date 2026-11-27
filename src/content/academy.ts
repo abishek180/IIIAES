@@ -87,9 +87,9 @@ export const learningModes: { mode: LearningMode; title: string; summary: string
 
 /** PLACEHOLDER — describe only verified infrastructure. */
 export const facilities = [
-  { title: "Classrooms", text: "Bright, well-ventilated classrooms designed for focused theory sessions.", img: "/images/stock/students-writing.jpg" },
+  { title: "Study hall", text: "A comfortable study hall with tiered seating, projection and audio for lectures and seminars.", img: "/images/campus/study-hall.jpg" },
   { title: "Practical training room", text: "A dedicated space for supervised practical sessions and technique practice.", img: "/images/stock/acupuncture-treatment.jpg" },
-  { title: "Clinical training", text: "Supervised clinical exposure for students in eligible programmes.", img: "/images/stock/acupuncture-needles.jpg" },
+  { title: "Consultation room", text: "A calm, private consultation room where students gain supervised clinical exposure.", img: "/images/campus/consultation-room.jpg" },
   { title: "Anatomy & study aids", text: "Models and visual aids to support anatomy and physiology learning.", img: "/images/stock/anatomy-model.jpg" },
   { title: "Library & reading space", text: "Reference books and a quiet space for self-study.", img: "/images/stock/library-reading.jpg" },
   { title: "Seminar space", text: "Room for workshops, guest sessions and academic events.", img: "/images/stock/seminar-speaker.jpg" },
@@ -113,7 +113,7 @@ export const whyStudy = [
 export const activities = [
   { title: "Practical workshops", text: "Hands-on workshops on techniques and case handling.", img: "/images/stock/seminar-speaker.jpg" },
   { title: "Clinical sessions", text: "Supervised sessions that build real-world confidence.", img: "/images/stock/acupuncture-treatment.jpg" },
-  { title: "Celebrations", text: "Onam, orientation days and certificate ceremonies.", img: "/images/stock/onam-celebration.jpg" },
+  { title: "Celebrations", text: "Orientation days, certificate ceremonies and festival celebrations.", img: "/images/stock/certificate-day.jpg" },
 ];
 
 export const academyFaqs: { group: string; items: { q: string; a: string }[] }[] = [

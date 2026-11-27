@@ -100,6 +100,7 @@ export function ButtonLink({
   icon = true,
   className,
   size = "md",
+  newTab = false,
 }: {
   href: string;
   children: ReactNode;
@@ -107,6 +108,8 @@ export function ButtonLink({
   icon?: boolean;
   size?: "sm" | "md";
   className?: string;
+  /** Open in a new tab (adds an accessible hint for screen readers) */
+  newTab?: boolean;
 }) {
   const v = buttonVariants[variant];
   const classes = cn(
@@ -119,6 +122,7 @@ export function ButtonLink({
   const content = (
     <>
       <span>{children}</span>
+      {newTab && <span className="sr-only"> (opens in a new tab)</span>}
       {icon && (
         <span
           className={cn(
@@ -141,7 +145,7 @@ export function ButtonLink({
     );
   }
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} {...(newTab ? { target: "_blank", rel: "noopener" } : {})}>
       {content}
     </Link>
   );

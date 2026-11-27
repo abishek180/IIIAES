@@ -32,7 +32,7 @@ import {
 import { AcademyCard, CalendarList, CourseCard, NoticeRow } from "@/components/cards";
 import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
 import { FounderFeature } from "@/components/founder";
-import { founder } from "@/content/leadership";
+import { coFounder, founder } from "@/content/leadership";
 import { AffiliationCta, ContactSection, GalleryGrid } from "@/components/sections";
 import { ArrowLink, ButtonLink, Container, Em, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
 
@@ -56,11 +56,11 @@ export default function HomePage() {
       <div className="px-2 pt-2 sm:px-3 sm:pt-3">
         <HeroCarousel slides={hero.slides} interval={hero.interval} tone={hero.theme} className="rounded-[28px] bg-paper text-ink-950">
           <Container className="grid grid-cols-1 gap-10 pt-28 pb-24 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32">
-            <div className="animate-fade-up max-w-3xl min-w-0">
+            <div className="max-w-3xl min-w-0">
               {headline && (
                 <Link
                   href={`/notices/${headline.slug}`}
-                  className="group inline-flex max-w-full items-center gap-2.5 rounded-full bg-white/80 py-1 pr-1 pl-3 text-xs ring-1 ring-ink-950/[0.06] backdrop-blur transition-colors hover:bg-white sm:text-sm"
+                  className="group animate-fade-up inline-flex max-w-full items-center gap-2.5 rounded-full bg-white/80 py-1 pr-1 pl-3 text-xs ring-1 ring-ink-950/[0.06] backdrop-blur transition-colors hover:bg-white sm:text-sm"
                 >
                   <span className="relative flex size-2 shrink-0">
                     <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-500 opacity-60" />
@@ -74,19 +74,22 @@ export default function HomePage() {
               )}
 
               <h1 className="mt-8 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.4rem]">
-                {hero.title.lead} <Em className="text-gold-600">{hero.title.accent}</Em>
-                {hero.title.trail && ` ${hero.title.trail}`}
+                <span className="animate-fade-up stagger-1 block">{hero.title.lead}</span>{" "}
+                <Em className="animate-fade-up stagger-2 block text-gold-600">
+                  {hero.title.accent}
+                  {hero.title.trail && ` ${hero.title.trail}`}
+                </Em>
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg">{hero.description}</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <p className="animate-fade-up stagger-3 mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg">{hero.description}</p>
+              <div className="animate-fade-up stagger-4 mt-9 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href={hero.primary.href} variant="dark">
                   {hero.primary.label}
                 </ButtonLink>
-                <ButtonLink href={hero.secondary.href} variant="light" className="ring-1 ring-ink-950/10">
+                <ButtonLink href={hero.secondary.href} newTab={hero.secondary.newTab} variant="light" className="ring-1 ring-ink-950/10">
                   {hero.secondary.label}
                 </ButtonLink>
               </div>
-              <Link href="/mukkam" className="group mt-6 flex items-start gap-2 text-sm font-medium text-ink-600 transition-colors hover:text-ink-950 sm:inline-flex sm:items-center">
+              <Link href="/mukkam" className="group animate-fade-up stagger-4 mt-6 flex items-start gap-2 text-sm font-medium text-ink-600 transition-colors hover:text-ink-950 sm:inline-flex sm:items-center">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-gold-600 sm:mt-0" aria-hidden />
                 <span>
                   Studying in Kozhikode? Visit the <span className="text-ink-950 underline decoration-gold-500 underline-offset-4">Mukkam Academy</span>
@@ -186,6 +189,7 @@ export default function HomePage() {
           <FounderFeature
             leader={founder}
             intro={`IIIAES was founded by ${founder.name} with one aim: to give acupuncture science the structure, rigour and practical depth of a modern academic discipline.`}
+            partners={[coFounder]}
             link={{ label: "Leadership & our story", href: "/about#leadership" }}
           />
         </Container>

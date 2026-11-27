@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const highlights = [
   { img: "/images/stock/acupuncture-treatment.jpg", title: "Practical sessions", text: "Regular hands-on sessions in small groups, guided by faculty." },
   { img: "/images/stock/classroom-teacher.jpg", title: "Workshops", text: "Specialised workshops on techniques, case management and allied topics." },
-  { img: "/images/stock/onam-celebration.jpg", title: "Celebrations", text: "Onam, orientation days and certificate ceremonies, celebrated together." },
+  { img: "/images/stock/certificate-day.jpg", title: "Celebrations", text: "Orientation days, certificate ceremonies and festival celebrations, together." },
   { img: "/images/stock/seminar-speaker.jpg", title: "Community outreach", text: "Awareness programmes and supervised community health activities." },
 ];
 

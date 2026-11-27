@@ -22,9 +22,17 @@ export const founder: Leader = {
   message: undefined, // PLACEHOLDER — awaiting the Founder's message
 };
 
+export const coFounder: Leader = {
+  name: "Acu Master Sufiyan K",
+  role: "Co-Founder",
+  qualifications: "BSc Psy · MDip Acu · DASc",
+  photo: "/images/people/sufiyan-k.jpg",
+  focus: "center 22%",
+  message: undefined, // PLACEHOLDER — awaiting the Co-Founder's message
+};
+
 /** PLACEHOLDER — remaining leadership profiles to be supplied by the institution. */
 export const leadershipTeam: Leader[] = [
   { name: "Name to be announced", role: "Academic Director" },
   { name: "Name to be announced", role: "Registrar" },
-  { name: "Name to be announced", role: "Controller of Examinations" },
 ];

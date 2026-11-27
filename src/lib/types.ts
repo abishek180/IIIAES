@@ -120,6 +120,8 @@ export type NavLink = {
   label: string;
   href: string;
   description?: string;
+  /** Open in a new browser tab */
+  newTab?: boolean;
 };
 
 export type NavItem = NavLink & {

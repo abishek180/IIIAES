@@ -7,7 +7,7 @@ import { getNotices, getSearchIndex } from "@/lib/data";
 import { footerNav, mainNav, site } from "@/content/site";
 import type { HeaderConfig } from "@/lib/types";
 import { instituteHero } from "@/content/hero";
-import { founder } from "@/content/leadership";
+import { coFounder, founder } from "@/content/leadership";
 
 const header: HeaderConfig = {
   brand: {
@@ -60,7 +60,7 @@ export default function InstituteLayout({ children }: LayoutProps<"/">) {
     logo: `${site.url}/brand/iiiaes-emblem.jpg`,
     email: site.contact.email,
     telephone: site.contact.phone,
-    founder: { "@type": "Person", name: founder.name, jobTitle: founder.role },
+    founder: [founder, coFounder].map((p) => ({ "@type": "Person", name: p.name, jobTitle: p.role })),
     address: {
       "@type": "PostalAddress",
       addressLocality: site.address.line1,

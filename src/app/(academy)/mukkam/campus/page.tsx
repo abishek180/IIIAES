@@ -48,7 +48,7 @@ export default function CampusPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-center text-xs text-ink-400">Photos are representative. Campus photography will be updated.</p>
+          <p className="mt-8 text-center text-xs text-ink-400">Some photos are representative and will be replaced with campus photography.</p>
         </Container>
       </Section>
     </>

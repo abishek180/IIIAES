@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Compass, Eye, Target } from "lucide-react";
 import { site } from "@/content/site";
-import { founder, leadershipTeam } from "@/content/leadership";
+import { coFounder, founder, leadershipTeam } from "@/content/leadership";
 import { FounderFeature } from "@/components/founder";
 import { PageHero } from "@/components/layout/page-hero";
 import { ButtonLink, Container, Em, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
@@ -29,7 +29,7 @@ export default function AboutPage() {
 
       <Section>
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <Photo src="/images/stock/kerala-building.jpg" label="Institute campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
+          <Photo src="/images/campus/iiiaes-campus.jpg" alt="The IIIAES campus building" label="Institute campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
           <div>
             <Eyebrow>Overview</Eyebrow>
             <h2 className="mt-4 font-display text-3xl leading-tight font-medium tracking-[-0.03em] text-ink-950 sm:text-4xl">
@@ -93,12 +93,20 @@ export default function AboutPage() {
             />
           </div>
           <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {leadershipTeam.map((p) => (
+            {[coFounder, ...leadershipTeam].map((p) => (
               <li key={p.role} className="rounded-3xl bg-paper p-2">
-                <Photo label="Portrait to be added" className="aspect-[4/3] rounded-[18px]" />
+                <Photo
+                  src={p.photo}
+                  alt={`${p.name}, ${p.role}`}
+                  label="Portrait to be added"
+                  focus={p.focus}
+                  className="aspect-[4/5] rounded-[18px]"
+                  sizes="(min-width:640px) 33vw, 100vw"
+                />
                 <div className="p-3">
                   <p className="font-display text-lg font-medium text-ink-950">{p.name}</p>
                   <p className="text-sm text-ink-500">{p.role}</p>
+                  {p.qualifications && <p className="mt-1 text-xs font-medium text-gold-700">{p.qualifications}</p>}
                 </div>
               </li>
             ))}
