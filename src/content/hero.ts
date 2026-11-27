@@ -42,13 +42,6 @@ export const instituteHero: HeroContent = {
       text: "Supervised practical sessions build correct technique and confidence.",
       cta: { label: "Explore courses", href: "/courses" },
     },
-    {
-      media: { type: "image", src: "/images/campus/consultation-room.jpg", alt: "Consultation room for supervised clinical training" },
-      caption: "Clinical exposure",
-      title: "Supervised clinical training",
-      text: "A calm consultation room where theory meets real practice.",
-      cta: { label: "Admissions", href: "/admissions" },
-    },
   ],
   title: { lead: "Rooted in tradition.", accent: "Advanced through science." },
   description:
@@ -64,7 +57,6 @@ export const academyHero: HeroContent = {
     { media: { type: "image", src: "/images/campus/iiiaes-campus.jpg", alt: "The IIIAES campus building at dusk", focus: "60% center" }, caption: "Mukkam campus" },
     { media: { type: "image", src: "/images/stock/acupuncture-needles.jpg", alt: "Close-up of acupuncture technique practice" }, caption: "Hands-on practice" },
     { media: { type: "image", src: "/images/campus/study-hall.jpg", alt: "The study hall at the Mukkam campus" }, caption: "Study hall" },
-    { media: { type: "image", src: "/images/campus/consultation-room.jpg", alt: "Consultation room for supervised clinical training" }, caption: "Consultation room" },
   ],
   title: { lead: "Learn acupuncture", accent: "hands-on,", trail: "right here in Mukkam." },
   description: "Offline, online and hybrid programmes with practical training on campus — delivered by the IIIAES Mukkam Academy.",
