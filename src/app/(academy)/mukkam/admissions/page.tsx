@@ -59,7 +59,7 @@ export default function AcademyAdmissionsPage() {
               <div key={r.label} className={r.gold ? "flex gap-3 bg-gold-400 p-5 text-ink-950" : "flex gap-3 bg-white/[0.06] p-5"}>
                 <r.icon className={r.gold ? "mt-0.5 size-4 shrink-0" : "mt-0.5 size-4 shrink-0 text-gold-400"} aria-hidden />
                 <div>
-                  <dt className={r.gold ? "text-xs opacity-70" : "text-xs text-white/45"}>{r.label}</dt>
+                  <dt className={r.gold ? "text-xs opacity-70" : "text-xs text-white/60"}>{r.label}</dt>
                   <dd className="mt-0.5 font-semibold">{r.value}</dd>
                 </div>
               </div>

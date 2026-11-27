@@ -14,7 +14,7 @@ import {
   Layers,
   Lightbulb,
   MapPin,
-  Network,
+  BadgeCheck,
   Presentation,
   Stethoscope,
   Users,
@@ -26,12 +26,15 @@ import {
   getFeaturedCourses,
   getGallery,
   getHeadlineNotice,
+  getHero,
   getNotices,
 } from "@/lib/data";
-import { site } from "@/content/site";
 import { AcademyCard, CalendarList, CourseCard, NoticeRow } from "@/components/cards";
+import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
+import { FounderFeature } from "@/components/founder";
+import { founder } from "@/content/leadership";
 import { AffiliationCta, ContactSection, GalleryGrid } from "@/components/sections";
-import { ArrowLink, ButtonLink, Container, Em, Emblem, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
+import { ArrowLink, ButtonLink, Container, Em, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -45,91 +48,74 @@ export default function HomePage() {
   const academies = getAcademies();
   const calendar = getCalendar().slice(0, 5);
   const gallery = getGallery().slice(0, 6);
+  const hero = getHero("institute");
 
   return (
     <>
-      {/* 1–3. Announcement · Header (layout) · Hero */}
+      {/* 1–3. Announcement · Header (layout) · Hero — slides and copy come from the CMS (content/hero.ts) */}
       <div className="px-2 pt-2 sm:px-3 sm:pt-3">
-        <section className="relative overflow-hidden rounded-[28px] bg-ink-950 text-white">
-          <div className="pointer-events-none absolute -top-48 right-[-15%] size-[44rem] rounded-full bg-gold-400/[0.09] blur-3xl" aria-hidden />
-          <div className="bg-dots pointer-events-none absolute inset-0 text-white/[0.035] [mask-image:linear-gradient(to_bottom,black,transparent_75%)]" aria-hidden />
-
-          <Container className="relative grid grid-cols-1 gap-12 pt-28 pb-24 sm:pt-36 sm:pb-32 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:pt-40 lg:pb-36">
-            <div className="animate-fade-up min-w-0">
+        <HeroCarousel slides={hero.slides} interval={hero.interval} tone={hero.theme} className="rounded-[28px] bg-paper text-ink-950">
+          <Container className="grid grid-cols-1 gap-10 pt-28 pb-24 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32">
+            <div className="animate-fade-up max-w-3xl min-w-0">
               {headline && (
                 <Link
                   href={`/notices/${headline.slug}`}
-                  className="group inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.06] py-1 pr-1 pl-3 text-xs backdrop-blur transition-colors hover:bg-white/10 sm:text-sm"
+                  className="group inline-flex max-w-full items-center gap-2.5 rounded-full bg-white/80 py-1 pr-1 pl-3 text-xs ring-1 ring-ink-950/[0.06] backdrop-blur transition-colors hover:bg-white sm:text-sm"
                 >
                   <span className="relative flex size-2 shrink-0">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-400 opacity-60" />
-                    <span className="relative inline-flex size-2 rounded-full bg-gold-400" />
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-500 opacity-60" />
+                    <span className="relative inline-flex size-2 rounded-full bg-gold-500" />
                   </span>
-                  <span className="truncate text-white/80">{headline.title}</span>
-                  <span className="flex shrink-0 items-center gap-1 rounded-full bg-white px-2.5 py-1 font-semibold text-ink-950">
+                  <span className="truncate text-ink-700">{headline.title}</span>
+                  <span className="flex shrink-0 items-center gap-1 rounded-full bg-ink-950 px-2.5 py-1 font-semibold text-white">
                     View <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" aria-hidden />
                   </span>
                 </Link>
               )}
 
               <h1 className="mt-8 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.4rem]">
-                Rooted in tradition. Advanced through <Em tone="dark">science.</Em>
+                {hero.title.lead} <Em className="text-gold-600">{hero.title.accent}</Em>
+                {hero.title.trail && ` ${hero.title.trail}`}
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
-                The {site.name} offers structured academic programmes in acupuncture science — combining classical understanding with practical
-                and clinical education.
-              </p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg">{hero.description}</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/courses">Explore programmes</ButtonLink>
-                <ButtonLink href="/admissions" variant="outline-light">
-                  Admissions 2027
+                <ButtonLink href={hero.primary.href} variant="dark">
+                  {hero.primary.label}
+                </ButtonLink>
+                <ButtonLink href={hero.secondary.href} variant="light" className="ring-1 ring-ink-950/10">
+                  {hero.secondary.label}
                 </ButtonLink>
               </div>
-              <Link
-                href="/mukkam"
-                className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors hover:text-white"
-              >
-                <MapPin className="size-4 text-gold-400" aria-hidden />
-                Studying in Kozhikode? Visit the <span className="text-gold-300 underline decoration-gold-400/40 underline-offset-4 group-hover:decoration-gold-300">Mukkam Academy</span>
-                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              <Link href="/mukkam" className="group mt-6 flex items-start gap-2 text-sm font-medium text-ink-600 transition-colors hover:text-ink-950 sm:inline-flex sm:items-center">
+                <MapPin className="mt-0.5 size-4 shrink-0 text-gold-600 sm:mt-0" aria-hidden />
+                <span>
+                  Studying in Kozhikode? Visit the <span className="text-ink-950 underline decoration-gold-500 underline-offset-4">Mukkam Academy</span>
+                  <ArrowRight className="ml-1 inline size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                </span>
               </Link>
             </div>
+          </Container>
 
-            {/* Emblem visual */}
-            <div className="relative mx-auto hidden aspect-square w-full max-w-[26rem] lg:block" aria-hidden>
-              <svg viewBox="0 0 200 200" className="animate-spin-slow absolute inset-0 size-full text-gold-400/50">
-                <defs>
-                  <path id="ring" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0" />
-                </defs>
-                <text className="fill-current font-sans text-[7.2px] font-medium tracking-[0.42em] uppercase">
-                  <textPath href="#ring">International Institute of Indian Acupuncture Science · Est. Kerala · </textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-[13%] rounded-full border border-white/10" />
-              <div className="absolute inset-[22%] rounded-full bg-gold-400/10 blur-2xl" />
-              <div className="absolute inset-[20%]">
-                <Emblem className="size-full ring-1 ring-gold-400/30" preload />
-              </div>
+          {/* Hero facts + slide controls */}
+          <Container className="pb-20">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <dl className="hidden grid-cols-4 gap-2 sm:grid lg:max-w-4xl lg:flex-1">
+                {[
+                  ["Programmes", "UG to certificate"],
+                  ["Learning modes", "Offline · Online · Hybrid"],
+                  ["Campus", "Mukkam, Kozhikode"],
+                  ["Network", "Affiliated academies"],
+                ].map(([k, v]) => (
+                  <div key={k} className="rounded-2xl bg-white/70 px-4 py-3 ring-1 ring-ink-950/[0.05] backdrop-blur-md">
+                    <dt className="text-[0.7rem] text-ink-500">{k}</dt>
+                    <dd className="mt-0.5 text-sm font-medium text-ink-950">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <HeroControls className="self-start lg:self-end" />
             </div>
           </Container>
-
-          {/* Hero facts */}
-          <Container className="relative hidden pb-20 sm:block">
-            <dl className="grid grid-cols-4 divide-x divide-white/10 border-t border-white/10 pt-6 text-sm">
-              {[
-                ["Programmes", "Undergraduate to certificate"],
-                ["Learning modes", "Offline · Online · Hybrid"],
-                ["Campus", "Mukkam, Kozhikode"],
-                ["Network", "Affiliated academies"],
-              ].map(([k, v]) => (
-                <div key={k} className="px-6 first:pl-0">
-                  <dt className="text-xs text-white/45">{k}</dt>
-                  <dd className="mt-1 font-medium text-white/90">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </Container>
-        </section>
+        </HeroCarousel>
       </div>
 
       {/* Quick access — the four most common visitor goals, one tap away */}
@@ -175,22 +161,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-3 sm:mt-20 lg:grid-cols-2">
-            <div className="rounded-3xl bg-ink-950 p-7 text-white sm:p-9">
-              <Eyebrow tone="dark">Vision</Eyebrow>
-              <p className="mt-5 font-display text-xl leading-snug font-medium tracking-tight sm:text-2xl">
-                To be a trusted centre for acupuncture education — known for academic quality, ethical practice and accessible learning.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white p-7 ring-1 ring-ink-950/[0.04] sm:p-9">
-              <Eyebrow>Mission</Eyebrow>
-              <p className="mt-5 font-display text-xl leading-snug font-medium tracking-tight text-ink-950 sm:text-2xl">
-                To educate skilled, responsible practitioners through rigorous theory, practical training and a supportive learning community.
-              </p>
-            </div>
-          </div>
-
-          <dl className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <dl className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 lg:grid-cols-4">
             {[
               { k: "Programmes", v: courses.length, suffix: "" },
               { k: "Learning modes", v: 3, suffix: "" },
@@ -206,6 +177,17 @@ export default function HomePage() {
               </div>
             ))}
           </dl>
+        </Container>
+      </Section>
+
+      {/* Leadership — Founder & Director */}
+      <Section className="pt-0 sm:pt-0">
+        <Container>
+          <FounderFeature
+            leader={founder}
+            intro={`IIIAES was founded by ${founder.name} with one aim: to give acupuncture science the structure, rigour and practical depth of a modern academic discipline.`}
+            link={{ label: "Leadership & our story", href: "/about#leadership" }}
+          />
         </Container>
       </Section>
 
@@ -256,7 +238,8 @@ export default function HomePage() {
               { icon: Stethoscope, title: "Clinical exposure", text: "Supervised clinical training is built into programmes where applicable." },
               { icon: Laptop, title: "Flexible learning", text: "Choose offline, online or hybrid study, depending on the programme." },
               { icon: Users, title: "Dedicated faculty", text: "Learn from teachers who combine academic knowledge with practice." },
-              { icon: Network, title: "Academy network", text: "Study at the Mukkam campus or an approved affiliated academy." },
+              // ⚠ Recognition claim supplied by the client — keep only with documented UGC approval (see SRS §11 content accuracy).
+              { icon: BadgeCheck, title: "A national first", text: "India’s first acupuncture institute to receive UGC approval." },
             ].map((f) => (
               <li key={f.title} className="bg-white p-7 sm:p-8">
                 <f.icon className="size-6 text-gold-600" strokeWidth={1.6} aria-hidden />
@@ -285,7 +268,7 @@ export default function HomePage() {
             />
             <ol className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
               {[
-                { n: "01", img: "/images/stock/lecture-professor.jpg", title: "Theoretical education", text: "Principles of acupuncture, anatomy, physiology and diagnostic methods, taught in structured modules." },
+                { n: "01", img: "/images/stock/classroom-teacher.jpg", title: "Theoretical education", text: "Principles of acupuncture, anatomy, physiology and diagnostic methods, taught in structured modules." },
                 { n: "02", img: "/images/stock/acupuncture-treatment.jpg", title: "Practical learning", text: "Point location, techniques and procedures practised under faculty supervision." },
                 { n: "03", img: "/images/stock/acupuncture-needles.jpg", title: "Clinical training", text: "Supervised clinical exposure and case work, where applicable to the programme." },
               ].map((s) => (

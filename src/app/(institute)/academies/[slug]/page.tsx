@@ -44,7 +44,7 @@ export default async function AcademyPage({ params }: PageProps<"/academies/[slu
             <div className="flex gap-3 bg-ink-950 p-5">
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold-400" aria-hidden />
               <div>
-                <dt className="text-xs text-white/45">Location</dt>
+                <dt className="text-xs text-white/60">Location</dt>
                 <dd className="mt-0.5 text-sm font-medium">
                   {academy.location}, {academy.district}, {academy.state}
                 </dd>
@@ -53,7 +53,7 @@ export default async function AcademyPage({ params }: PageProps<"/academies/[slu
             <div className="flex gap-3 bg-ink-950 p-5">
               <BadgeCheck className="mt-0.5 size-4 shrink-0 text-gold-400" aria-hidden />
               <div>
-                <dt className="text-xs text-white/45">Affiliation status</dt>
+                <dt className="text-xs text-white/60">Affiliation status</dt>
                 <dd className="mt-0.5 text-sm font-medium">
                   {academy.status}
                   {academy.validUntil && ` · valid until ${formatDate(academy.validUntil)}`}
@@ -66,11 +66,11 @@ export default async function AcademyPage({ params }: PageProps<"/academies/[slu
       <Section className="pt-10 sm:pt-14">
         <Container>
           <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
-            <Photo src={academy.image ?? "/images/stock/campus-building.jpg"} label="Campus" sizes="(min-width:1024px) 50vw, 100vw" className="col-span-2 aspect-[16/10] lg:row-span-2 lg:aspect-auto" />
-            <Photo src="/images/stock/lecture-students.jpg" label="Classroom" sizes="25vw" className="aspect-square" />
+            <Photo src={academy.image ?? "/images/stock/kerala-building.jpg"} label="Campus" sizes="(min-width:1024px) 50vw, 100vw" className="col-span-2 aspect-[16/10] lg:row-span-2 lg:aspect-auto" />
+            <Photo src="/images/stock/students-writing.jpg" label="Classroom" sizes="25vw" className="aspect-square" />
             <Photo src="/images/stock/acupuncture-treatment.jpg" label="Practical space" sizes="25vw" className="aspect-square" />
             <Photo src="/images/stock/library-shelves.jpg" label="Library" sizes="25vw" className="aspect-square" />
-            <Photo src="/images/stock/seminar.jpg" label="Events" sizes="25vw" className="aspect-square" />
+            <Photo src="/images/stock/onam-celebration.jpg" label="Events" sizes="25vw" className="aspect-square" />
           </div>
           <h2 className="mt-16 font-display text-3xl font-medium tracking-tight text-ink-950">Approved programmes</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

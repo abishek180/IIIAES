@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CalendarDays, Clock, Laptop, MapPin, MonitorPlay, Quote, School } from "lucide-react";
-import { getAcademyOfferings, getGallery, getNotices } from "@/lib/data";
+import { getAcademyOfferings, getGallery, getHero, getNotices } from "@/lib/data";
+import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
 import { formatDate } from "@/lib/utils";
 import { academyContact, academySite, activities, facilities, faculty, learningModes, whyStudy } from "@/content/academy";
 import { CourseCard, NoticeRow, Steps } from "@/components/cards";
@@ -16,37 +16,32 @@ export default function AcademyHomePage() {
   const offerings = getAcademyOfferings();
   const notices = getNotices({ site: "academy" }).slice(0, 4);
   const { admission } = academySite;
+  const hero = getHero("academy");
 
   return (
     <>
       {/* 1–2. Admission announcement (header strip) + Hero */}
       <div className="px-2 pt-2 sm:px-3 sm:pt-3">
-        <section className="relative isolate overflow-hidden rounded-[28px] bg-ink-950 text-white">
-          <Image
-            src="/images/stock/acupuncture-treatment.jpg"
-            alt="Supervised practical acupuncture session"
-            fill
-            preload
-            sizes="100vw"
-            className="-z-10 object-cover object-center opacity-70"
-          />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/75 to-ink-950/40 lg:bg-gradient-to-r lg:from-ink-950 lg:via-ink-950/80 lg:to-ink-950/20" aria-hidden />
-
+        <HeroCarousel slides={hero.slides} interval={hero.interval} tone={hero.theme} className="rounded-[28px] bg-ink-950 text-white">
           <Container className="grid grid-cols-1 gap-10 pt-40 pb-10 sm:pt-48 lg:grid-cols-[1fr_24rem] lg:items-end lg:pt-56 lg:pb-14">
             <div className="animate-fade-up min-w-0">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
-                <MapPin className="size-3.5 text-gold-400" aria-hidden /> Mukkam, Kozhikode · Kerala
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
+                  <MapPin className="size-3.5 text-gold-400" aria-hidden /> Mukkam, Kozhikode · Kerala
+                </span>
+                <HeroControls />
+              </div>
               <h1 className="mt-6 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.2rem]">
-                Learn acupuncture <Em tone="dark">hands-on</Em>, right here in Mukkam.
+                {hero.title.lead} <Em tone="dark">{hero.title.accent}</Em>
+                {hero.title.trail && ` ${hero.title.trail}`}
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-                Offline, online and hybrid programmes with practical training on campus — delivered by the IIIAES Mukkam Academy.
+                {hero.description}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={`${b}/admissions#apply`}>Apply for {admission.batch}</ButtonLink>
-                <ButtonLink href={`${b}/courses`} variant="outline-light">
-                  Explore courses
+                <ButtonLink href={hero.primary.href}>{hero.primary.label}</ButtonLink>
+                <ButtonLink href={hero.secondary.href} variant="outline-light">
+                  {hero.secondary.label}
                 </ButtonLink>
               </div>
             </div>
@@ -95,7 +90,7 @@ export default function AcademyHomePage() {
               </div>
             </aside>
           </Container>
-        </section>
+        </HeroCarousel>
       </div>
 
       {/* 3. Academy overview */}

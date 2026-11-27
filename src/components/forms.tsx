@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { CircleCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -179,7 +180,11 @@ function FormShell({
         <label className="flex items-start gap-3 text-sm text-ink-600">
           <input type="checkbox" name="consent" required className="mt-0.5 size-4 shrink-0 accent-ink-950" aria-invalid={!!errors.consent} />
           <span>
-            I agree that IIIAES may store and use these details to respond to my enquiry, as described in the privacy policy.
+            I agree that IIIAES may store and use these details to respond to my enquiry, as described in the{" "}
+            <Link href="/privacy" target="_blank" className="font-medium text-ink-950 underline underline-offset-2">
+              privacy policy
+            </Link>
+            .
           </span>
         </label>
         {errors.consent && <p className="mt-1.5 ml-7 text-xs text-red-600">{errors.consent}</p>}
@@ -308,11 +313,11 @@ export function ApplicationForm({
             />
           </Fieldset>
           <div className="sm:col-span-2">
-            <label htmlFor="documents" className="text-sm font-medium text-ink-800">
+            <label htmlFor="application-documents" className="text-sm font-medium text-ink-800">
               Documents <span className="font-normal text-ink-400">(optional — mark sheet, ID; PDF/JPG, max {MAX_UPLOAD_MB} MB each)</span>
             </label>
             <input
-              id="documents"
+              id="application-documents"
               name="documents"
               type="file"
               multiple

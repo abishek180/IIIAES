@@ -6,6 +6,8 @@ import { Em } from "@/components/ui/primitives";
 import { getNotices, getSearchIndex } from "@/lib/data";
 import { footerNav, mainNav, site } from "@/content/site";
 import type { HeaderConfig } from "@/lib/types";
+import { instituteHero } from "@/content/hero";
+import { founder } from "@/content/leadership";
 
 const header: HeaderConfig = {
   brand: {
@@ -17,6 +19,7 @@ const header: HeaderConfig = {
   nav: mainNav,
   cta: { label: "Apply now", href: "/admissions" },
   contactHref: "/contact",
+  lightHeroPaths: instituteHero.theme === "light" ? ["/"] : [],
   quickLinks: [
     { label: "Courses", href: "/courses" },
     { label: "Admissions", href: "/admissions" },
@@ -42,7 +45,6 @@ const footer: FooterConfig = {
     { ...footerNav[2], links: [...footerNav[2].links, { label: "Mukkam Academy", href: "/mukkam" }] },
   ],
   info: site,
-  watermark: "IIIAES",
 };
 
 export default function InstituteLayout({ children }: LayoutProps<"/">) {
@@ -58,6 +60,7 @@ export default function InstituteLayout({ children }: LayoutProps<"/">) {
     logo: `${site.url}/brand/iiiaes-emblem.jpg`,
     email: site.contact.email,
     telephone: site.contact.phone,
+    founder: { "@type": "Person", name: founder.name, jobTitle: founder.role },
     address: {
       "@type": "PostalAddress",
       addressLocality: site.address.line1,
@@ -70,7 +73,7 @@ export default function InstituteLayout({ children }: LayoutProps<"/">) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Suspense fallback={<SiteHeader pathname="" config={header} searchIndex={searchIndex} />}>
+      <Suspense fallback={<SiteHeader pathname="" config={header} searchIndex={[]} shell />}>
         <SiteHeaderWithPath config={header} searchIndex={searchIndex} />
       </Suspense>
       <main id="main">{children}</main>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Compass, Eye, Target } from "lucide-react";
 import { site } from "@/content/site";
+import { founder, leadershipTeam } from "@/content/leadership";
+import { FounderFeature } from "@/components/founder";
 import { PageHero } from "@/components/layout/page-hero";
 import { ButtonLink, Container, Em, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
 
@@ -10,13 +12,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-/* PLACEHOLDER — leadership names, photos and messages must be supplied by the institution. */
-const leadership = [
-  { role: "Chairman", name: "Name to be announced" },
-  { role: "Director", name: "Name to be announced" },
-  { role: "Academic Director", name: "Name to be announced" },
-  { role: "Registrar", name: "Name to be announced" },
-];
 
 export default function AboutPage() {
   return (
@@ -34,7 +29,7 @@ export default function AboutPage() {
 
       <Section>
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <Photo src="/images/stock/campus-building.jpg" label="Institute campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
+          <Photo src="/images/stock/kerala-building.jpg" label="Institute campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
           <div>
             <Eyebrow>Overview</Eyebrow>
             <h2 className="mt-4 font-display text-3xl leading-tight font-medium tracking-[-0.03em] text-ink-950 sm:text-4xl">
@@ -90,13 +85,21 @@ export default function AboutPage() {
 
       <Section id="leadership" className="bg-white">
         <Container>
-          <SectionHeading eyebrow="Leadership" title={<>The people <Em>behind IIIAES</Em></>} description="Profiles of the institute’s leadership will be published here." />
-          <ul className="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {leadership.map((p) => (
-              <li key={p.role}>
-                <Photo label="Portrait" className="aspect-[4/5]" />
-                <p className="mt-4 font-display text-lg font-medium text-ink-950">{p.name}</p>
-                <p className="text-sm text-ink-500">{p.role}</p>
+          <SectionHeading eyebrow="Leadership" title={<>The people <Em>behind IIIAES</Em></>} />
+          <div className="mt-10">
+            <FounderFeature
+              leader={founder}
+              intro={`As Founder & Director, ${founder.name} leads IIIAES’s mission to make acupuncture science a structured, practice-led academic discipline — from the classroom to supervised clinical training.`}
+            />
+          </div>
+          <ul className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {leadershipTeam.map((p) => (
+              <li key={p.role} className="rounded-3xl bg-paper p-2">
+                <Photo label="Portrait to be added" className="aspect-[4/3] rounded-[18px]" />
+                <div className="p-3">
+                  <p className="font-display text-lg font-medium text-ink-950">{p.name}</p>
+                  <p className="text-sm text-ink-500">{p.role}</p>
+                </div>
               </li>
             ))}
           </ul>

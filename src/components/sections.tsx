@@ -31,11 +31,11 @@ export function AffiliationCta() {
           <div className="pointer-events-none absolute -right-4 -bottom-12 size-[14rem] rounded-full border-[2rem] border-ink-950/[0.06]" aria-hidden />
           <Container className="relative flex flex-col gap-8 py-14 sm:py-20 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-ink-950/60 uppercase">For institutions</p>
+              <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-ink-950/75 uppercase">For institutions</p>
               <h2 className="mt-4 font-display text-[2rem] leading-[1.04] font-medium tracking-[-0.03em] text-balance sm:text-5xl">
-                Offer IIIAES programmes at <em className="font-display text-ink-950/55 not-italic">your institution.</em>
+                Offer IIIAES programmes at <em className="font-display not-italic underline decoration-ink-950/25 decoration-[0.08em] underline-offset-[0.12em]">your institution.</em>
               </h2>
-              <p className="mt-4 max-w-xl text-base text-ink-950/70 sm:text-lg">
+              <p className="mt-4 max-w-xl text-base text-ink-950/85 sm:text-lg">
                 Eligible institutions can apply for affiliation. Review the criteria and submit an enquiry — our team will guide you through the process.
               </p>
             </div>

@@ -4,6 +4,7 @@
  * IIIAES design tokens.
  * Gold values are sampled from the official emblem (#F0C42F dominant, from the high-res logo).
  * gold-700 is the accessible gold for text on light backgrounds (WCAG AA).
+ * Greys: ink-500+ for body text, ink-400 for small labels (≥4.5:1 on paper), ink-300 only for large text/decoration (≥3:1).
  */
 @theme {
   --color-ink-950: #0f0f0f;
@@ -11,9 +12,9 @@
   --color-ink-800: #242422;
   --color-ink-700: #3b3a37;
   --color-ink-600: #55544f;
-  --color-ink-500: #6e6d67;
-  --color-ink-400: #8f8e87;
-  --color-ink-300: #b8b7b0;
+  --color-ink-500: #57564f;
+  --color-ink-400: #6b6a64;
+  --color-ink-300: #8a8983;
   --color-ink-200: #d9d8d2;
 
   --color-paper: #f5f4f0;
@@ -132,4 +133,17 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@utility animate-hero-progress {
+  animation: hero-progress linear forwards;
 }

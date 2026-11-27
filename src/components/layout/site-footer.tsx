@@ -14,7 +14,6 @@ export type FooterConfig = {
   info: ContactInfo;
   /** Small line under the brand, e.g. institutional affiliation details */
   note?: ReactNode;
-  watermark: string;
 };
 
 export function SiteFooter({ config }: { config: FooterConfig }) {
@@ -44,7 +43,7 @@ export function SiteFooter({ config }: { config: FooterConfig }) {
                   <span className="block text-xs font-normal text-white/50">{config.brand.subtitle}</span>
                 </span>
               </Link>
-              {config.note && <p className="mt-5 max-w-sm text-xs leading-relaxed text-white/45">{config.note}</p>}
+              {config.note && <p className="mt-5 max-w-sm text-xs leading-relaxed text-white/60">{config.note}</p>}
               <ul className="mt-8 space-y-3 text-sm text-white/70">
                 <li className="flex gap-3">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-gold-400" aria-hidden />
@@ -74,7 +73,7 @@ export function SiteFooter({ config }: { config: FooterConfig }) {
             </div>
             {config.columns.map((col) => (
               <nav key={col.title} aria-label={col.title}>
-                <p className="text-[0.7rem] font-semibold tracking-[0.16em] text-white/40 uppercase">{col.title}</p>
+                <p className="text-[0.7rem] font-semibold tracking-[0.16em] text-white/60 uppercase">{col.title}</p>
                 <ul className="mt-5 space-y-3">
                   {col.links.map((l) => (
                     <li key={l.href}>
@@ -89,7 +88,7 @@ export function SiteFooter({ config }: { config: FooterConfig }) {
           </div>
 
           {/* Bottom */}
-          <div className="flex flex-col gap-4 border-t border-white/10 py-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 border-t border-white/10 py-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {site.copyrightYear} {site.name}. All rights reserved.
             </p>
@@ -99,16 +98,15 @@ export function SiteFooter({ config }: { config: FooterConfig }) {
                   {l.label}
                 </Link>
               ))}
-              {site.social.map((s) => (
-                <a key={s.label} href={s.href} className="hover:text-white">
+              {site.social
+                .filter((s) => s.href !== "#")
+                .map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                   {s.label}
                 </a>
               ))}
             </div>
           </div>
-        </div>
-        <div className="pointer-events-none absolute -right-20 -bottom-24 select-none font-display text-[11rem] leading-none font-semibold tracking-[-0.06em] whitespace-nowrap text-white/[0.03] sm:text-[18rem]" aria-hidden>
-          {config.watermark}
         </div>
       </div>
     </footer>

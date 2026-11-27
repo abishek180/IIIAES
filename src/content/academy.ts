@@ -53,6 +53,7 @@ export const academyNav: NavItem[] = [
   },
   { label: "Admissions", href: `${b}/admissions` },
   { label: "News", href: `${b}/news` },
+  { label: "IIIAES Institute", href: "/" },
 ];
 
 /** Academy-specific details layered on top of central course data. SAMPLE CONTENT. */
@@ -86,12 +87,12 @@ export const learningModes: { mode: LearningMode; title: string; summary: string
 
 /** PLACEHOLDER — describe only verified infrastructure. */
 export const facilities = [
-  { title: "Classrooms", text: "Bright, well-ventilated classrooms designed for focused theory sessions.", img: "/images/stock/lecture-students.jpg" },
+  { title: "Classrooms", text: "Bright, well-ventilated classrooms designed for focused theory sessions.", img: "/images/stock/students-writing.jpg" },
   { title: "Practical training room", text: "A dedicated space for supervised practical sessions and technique practice.", img: "/images/stock/acupuncture-treatment.jpg" },
   { title: "Clinical training", text: "Supervised clinical exposure for students in eligible programmes.", img: "/images/stock/acupuncture-needles.jpg" },
   { title: "Anatomy & study aids", text: "Models and visual aids to support anatomy and physiology learning.", img: "/images/stock/anatomy-model.jpg" },
-  { title: "Library & reading space", text: "Reference books and a quiet space for self-study.", img: "/images/stock/library-shelves.jpg" },
-  { title: "Seminar space", text: "Room for workshops, guest sessions and academic events.", img: "/images/stock/seminar.jpg" },
+  { title: "Library & reading space", text: "Reference books and a quiet space for self-study.", img: "/images/stock/library-reading.jpg" },
+  { title: "Seminar space", text: "Room for workshops, guest sessions and academic events.", img: "/images/stock/seminar-speaker.jpg" },
 ];
 
 /** PLACEHOLDER — faculty names, photos and qualifications must be supplied by the academy. */
@@ -110,9 +111,9 @@ export const whyStudy = [
 ];
 
 export const activities = [
-  { title: "Practical workshops", text: "Hands-on workshops on techniques and case handling.", img: "/images/stock/workshop.jpg" },
+  { title: "Practical workshops", text: "Hands-on workshops on techniques and case handling.", img: "/images/stock/seminar-speaker.jpg" },
   { title: "Clinical sessions", text: "Supervised sessions that build real-world confidence.", img: "/images/stock/acupuncture-treatment.jpg" },
-  { title: "Academic events", text: "Orientation, seminars and graduation celebrations.", img: "/images/stock/graduation.jpg" },
+  { title: "Celebrations", text: "Onam, orientation days and certificate ceremonies.", img: "/images/stock/onam-celebration.jpg" },
 ];
 
 export const academyFaqs: { group: string; items: { q: string; a: string }[] }[] = [

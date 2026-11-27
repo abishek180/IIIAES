@@ -13,11 +13,18 @@ export const metadata: Metadata = {
     template: `%s · ${site.shortName}`,
   },
   description: site.description,
+  applicationName: site.shortName,
+  keywords: ["acupuncture", "acupuncture course", "BSc Acupuncture Science", "acupuncture institute Kerala", "acupuncture Kozhikode", "Mukkam", "IIIAES"],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  formatDetection: { telephone: false, email: false, address: false },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: "en_IN",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

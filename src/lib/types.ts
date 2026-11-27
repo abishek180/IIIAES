@@ -147,6 +147,8 @@ export type HeaderConfig = {
   crossLink?: NavLink;
   /** Gold strip shown above the header on the home page only */
   announcement?: { text: string; short: string; href: string; cta: string };
+  /** Paths whose hero is light, so the transparent header uses dark text */
+  lightHeroPaths?: string[];
   contact: { phoneHref: string; whatsappHref: string; email: string };
 };
 
@@ -155,4 +157,27 @@ export type ContactInfo = {
   contact: { phone: string; phoneHref: string; whatsappHref: string; email: string; hours: string };
   mapEmbed: string;
   mapLink: string;
+};
+
+/* ---------- Hero (CMS-managed) ---------- */
+
+export type HeroMedia =
+  | { type: "image"; src: string; alt: string; /** CSS object-position, e.g. "center 30%" */ focus?: string }
+  | { type: "video"; src: string; poster: string; alt: string; focus?: string };
+
+export type HeroSlide = {
+  media: HeroMedia;
+  /** Short label shown beside the slide controls, e.g. "Campus, Kozhikode" */
+  caption?: string;
+};
+
+export type HeroContent = {
+  theme: "light" | "dark";
+  /** Milliseconds each slide stays on screen */
+  interval: number;
+  slides: HeroSlide[];
+  title: { lead: string; accent: string; trail?: string };
+  description: string;
+  primary: NavLink;
+  secondary: NavLink;
 };

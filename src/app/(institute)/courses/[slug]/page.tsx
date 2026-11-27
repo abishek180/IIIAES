@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: PageProps<"/courses/[slug]">)
     title: course.title,
     description: course.summary,
     alternates: { canonical: `/courses/${course.slug}` },
-    openGraph: { title: course.title, description: course.summary },
   };
 }
 
@@ -78,7 +77,7 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
               <div key={f.label} className="flex gap-3 bg-ink-950 p-4 sm:p-5">
                 <f.icon className="mt-0.5 size-4 shrink-0 text-gold-400" aria-hidden />
                 <div>
-                  <dt className="text-xs text-white/45">{f.label}</dt>
+                  <dt className="text-xs text-white/60">{f.label}</dt>
                   <dd className="mt-0.5 text-sm font-medium text-white">{f.value}</dd>
                 </div>
               </div>

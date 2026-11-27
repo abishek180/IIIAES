@@ -7,6 +7,7 @@ import { notices } from "@/content/notices";
 import { academies, calendar, downloads, gallery } from "@/content/misc";
 import { mainNav } from "@/content/site";
 import { academyNav, offerings } from "@/content/academy";
+import { academyHero, instituteHero } from "@/content/hero";
 import type { Notice, NoticePriority, SearchEntry, SiteKey } from "@/lib/types";
 
 const priorityRank: Record<NoticePriority, number> = { urgent: 0, important: 1, normal: 2 };
@@ -120,4 +121,8 @@ export function getSearchIndex(): SearchEntry[] {
     ...getNotices().map((n) => ({ title: n.title, href: `/notices/${n.slug}`, section: "Notice" as const, keywords: n.category })),
     ...academies.map((a) => ({ title: `${a.name} — ${a.location}`, href: `/academies/${a.slug}`, section: "Academy" as const, keywords: a.district })),
   ];
+}
+
+export function getHero(site: SiteKey) {
+  return site === "academy" ? academyHero : instituteHero;
 }

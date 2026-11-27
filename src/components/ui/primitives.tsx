@@ -17,9 +17,9 @@ export function Section({ className, ...props }: ComponentProps<"section">) {
 /* ---------- Typography ---------- */
 
 /** Gold accent for one or two words inside a heading (same Inter Tight face as the heading). */
-export function Em({ children, tone = "light" }: { children: ReactNode; tone?: "light" | "dark" }) {
+export function Em({ children, tone = "light", className }: { children: ReactNode; tone?: "light" | "dark"; className?: string }) {
   return (
-    <em className={cn("font-display not-italic", tone === "dark" ? "text-gold-400" : "text-gold-700")}>
+    <em className={cn("font-display not-italic", className ?? (tone === "dark" ? "text-gold-400" : "text-gold-700"))}>
       {children}
     </em>
   );
@@ -89,8 +89,8 @@ const buttonVariants: Record<ButtonVariant, { root: string; icon: string }> = {
   gold: { root: "bg-gold-400 text-ink-950 hover:bg-gold-300", icon: "bg-ink-950 text-gold-400" },
   dark: { root: "bg-ink-950 text-white hover:bg-ink-800", icon: "bg-gold-400 text-ink-950" },
   light: { root: "bg-white text-ink-950 hover:bg-paper", icon: "bg-ink-950 text-white" },
-  "outline-light": { root: "border border-white/20 text-white hover:bg-white/10", icon: "bg-white/10 text-white" },
-  "outline-dark": { root: "border border-ink-950/15 text-ink-950 hover:bg-ink-950/5", icon: "bg-ink-950/5 text-ink-950" },
+  "outline-light": { root: "border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20", icon: "bg-white/15 text-white" },
+  "outline-dark": { root: "border border-ink-950/20 bg-white/60 text-ink-950 hover:bg-white", icon: "bg-ink-950/[0.07] text-ink-950" },
 };
 
 export function ButtonLink({
@@ -190,6 +190,7 @@ export function Photo({
   className,
   tone = "light",
   sizes = "(min-width: 1024px) 33vw, 100vw",
+  focus,
 }: {
   src?: string;
   alt?: string;
@@ -197,6 +198,8 @@ export function Photo({
   className?: string;
   tone?: "light" | "dark";
   sizes?: string;
+  /** CSS object-position, e.g. "center 20%" */
+  focus?: string;
 }) {
   return (
     <div
@@ -207,14 +210,14 @@ export function Photo({
       )}
     >
       {src ? (
-        <Image src={src} alt={alt ?? label} fill sizes={sizes} className="object-cover" />
+        <Image src={src} alt={alt ?? label} fill sizes={sizes} className="object-cover" style={{ objectPosition: focus }} />
       ) : (
         <>
           <div className="bg-dots absolute inset-0" aria-hidden />
           <div
             className={cn(
               "absolute inset-x-0 bottom-0 flex items-center gap-2 p-4 text-xs font-medium",
-              tone === "light" ? "text-ink-400" : "text-white/40",
+              tone === "light" ? "text-ink-400" : "text-white/60",
             )}
           >
             <Camera className="size-3.5" aria-hidden />

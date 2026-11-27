@@ -87,7 +87,6 @@ const footer: FooterConfig = {
   ],
   info: academyContact,
   note: academySite.affiliationNote,
-  watermark: "MUKKAM",
 };
 
 export default function AcademyLayout({ children }: LayoutProps<"/mukkam">) {
@@ -114,7 +113,7 @@ export default function AcademyLayout({ children }: LayoutProps<"/mukkam">) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Suspense fallback={<SiteHeader pathname="" config={header} searchIndex={searchIndex} />}>
+      <Suspense fallback={<SiteHeader pathname="" config={header} searchIndex={[]} shell />}>
         <SiteHeaderWithPath config={header} searchIndex={searchIndex} />
       </Suspense>
       <main id="main">{children}</main>

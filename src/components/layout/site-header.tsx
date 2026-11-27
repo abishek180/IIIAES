@@ -23,7 +23,11 @@ export function SiteHeaderWithPath(props: HeaderProps) {
   return <SiteHeader key={pathname} pathname={pathname} {...props} />;
 }
 
-export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pathname: string }) {
+/**
+ * `shell` renders a static placeholder (used as the Suspense fallback) without ids, menus or dialogs,
+ * so the streamed real header never duplicates element ids in the document.
+ */
+export function SiteHeader({ pathname, config, searchIndex, shell = false }: HeaderProps & { pathname: string; shell?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -70,6 +74,15 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
 
   // Solid (light) bar when scrolled or when the mobile menu is open; transparent over dark heroes otherwise.
   const solid = scrolled || menuOpen;
+  // Over a light hero the transparent bar needs dark text.
+  const onLight = !solid && !!config.lightHeroPaths?.includes(pathname);
+  const lightUI = solid || onLight;
+  // Controls floating over hero photos get a frosted backing so they stay legible on any image.
+  const chip = solid
+    ? "hover:bg-ink-950/5"
+    : onLight
+      ? "bg-white/85 ring-1 ring-ink-950/[0.08] backdrop-blur-md hover:bg-white"
+      : "bg-ink-950/45 ring-1 ring-white/20 backdrop-blur-md hover:bg-ink-950/65";
   const { brand, announcement } = config;
   const showAnnouncement = !!announcement && pathname === brand.href && !solid;
 
@@ -102,7 +115,9 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
             "rounded-2xl transition-[background-color,box-shadow,color] duration-300",
             solid
               ? "bg-white/85 text-ink-950 shadow-[0_1px_0_rgba(15,15,15,0.06),0_12px_32px_-16px_rgba(15,15,15,0.25)] backdrop-blur-xl"
-              : "text-white",
+              : onLight
+                ? "text-ink-950"
+                : "text-white",
           )}
         >
           <div className="mx-auto flex h-16 max-w-[96rem] items-center justify-between gap-3 px-3 sm:px-6 xl:gap-6">
@@ -111,7 +126,7 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
               <Emblem className="size-10" preload />
               <span className="min-w-0 leading-tight">
                 <span className="block font-display text-[0.95rem] font-semibold tracking-tight">{brand.title}</span>
-                <span className={cn("block max-w-[11rem] truncate text-[0.68rem] sm:max-w-none", solid ? "text-ink-500" : "text-white/60")}>
+                <span className={cn("block max-w-[11rem] truncate text-[0.68rem] sm:max-w-none", lightUI ? "text-ink-500" : "text-white/75")}>
                   <span className="sm:hidden xl:inline 2xl:hidden">{brand.subtitleShort}</span>
                   <span className="hidden sm:inline xl:hidden 2xl:inline">{brand.subtitle}</span>
                 </span>
@@ -123,7 +138,11 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
               <ul
                 className={cn(
                   "flex items-center gap-0.5 rounded-full border p-1 transition-colors",
-                  solid ? "border-ink-950/[0.06] bg-ink-950/[0.03]" : "border-white/10 bg-white/[0.06] backdrop-blur-md",
+                  solid
+                    ? "border-ink-950/[0.06] bg-ink-950/[0.03]"
+                    : onLight
+                      ? "border-ink-950/[0.08] bg-white/85 backdrop-blur-md"
+                      : "border-white/20 bg-ink-950/45 backdrop-blur-md",
                 )}
               >
                 {config.nav.map((item) => {
@@ -131,12 +150,12 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
                   const itemClass = cn(
                     "flex h-9 items-center gap-1 rounded-full px-3 text-[0.82rem] font-medium whitespace-nowrap transition-colors 2xl:px-4",
                     active
-                      ? solid
+                      ? lightUI
                         ? "bg-ink-950 text-white"
                         : "bg-white text-ink-950"
-                      : solid
+                      : lightUI
                         ? "text-ink-700 hover:bg-ink-950/5 hover:text-ink-950"
-                        : "text-white/80 hover:bg-white/10 hover:text-white",
+                        : "text-white/90 hover:bg-white/15 hover:text-white",
                   );
                   if (!item.children) {
                     return (
@@ -155,14 +174,14 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
                         type="button"
                         className={itemClass}
                         aria-expanded={open}
-                        aria-controls={panelId}
+                        aria-controls={shell ? undefined : panelId}
                         onClick={() => (open ? setDropdown(null) : openDropdown(item.label))}
                       >
                         {item.label}
                         <ChevronDown className={cn("size-3.5 transition-transform duration-300", open && "rotate-180")} aria-hidden />
                       </button>
                       <div
-                        id={panelId}
+                        id={shell ? undefined : panelId}
                         className={cn(
                           "absolute top-full left-1/2 w-[23rem] -translate-x-1/2 pt-3 transition-[opacity,translate] duration-200",
                           open ? "visible opacity-100" : "invisible -translate-y-1 opacity-0",
@@ -197,11 +216,11 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className={cn("flex h-10 items-center gap-2 rounded-full px-3 text-sm transition-colors", solid ? "hover:bg-ink-950/5" : "hover:bg-white/10")}
+                className={cn("flex h-10 items-center gap-2 rounded-full px-3 text-sm transition-colors", chip)}
                 aria-label="Search the website"
               >
                 <Search className="size-[1.1rem]" aria-hidden />
-                <kbd className={cn("hidden rounded-md border px-1.5 py-0.5 font-sans text-[0.65rem] 2xl:inline", solid ? "border-ink-950/10 text-ink-500" : "border-white/15 text-white/60")}>
+                <kbd className={cn("hidden rounded-md border px-1.5 py-0.5 font-sans text-[0.65rem] 2xl:inline", lightUI ? "border-ink-950/10 text-ink-500" : "border-white/25 text-white/75")}>
                   Ctrl K
                 </kbd>
               </button>
@@ -209,7 +228,7 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
                 href={config.contactHref}
                 className={cn(
                   "hidden h-10 items-center rounded-full border px-4 text-[0.82rem] font-medium whitespace-nowrap transition-colors lg:flex",
-                  solid ? "border-ink-950/10 hover:bg-ink-950/5" : "border-white/15 hover:bg-white/10",
+                  solid ? "border-ink-950/10 hover:bg-ink-950/5" : cn("border-transparent", chip),
                 )}
               >
                 Contact
@@ -223,9 +242,9 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
               </Link>
               <button
                 type="button"
-                className={cn("grid size-10 place-items-center rounded-full transition-colors xl:hidden", solid ? "bg-ink-950 text-white" : "bg-white text-ink-950")}
+                className={cn("grid size-10 place-items-center rounded-full transition-colors xl:hidden", lightUI ? "bg-ink-950 text-white" : "bg-white text-ink-950")}
                 aria-expanded={menuOpen}
-                aria-controls="mobile-menu"
+                aria-controls={shell ? undefined : "mobile-menu"}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setMenuOpen((v) => !v)}
               >
@@ -239,6 +258,8 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
         </div>
       </header>
 
+      {!shell && (
+        <>
       <MobileMenu
         open={menuOpen}
         pathname={pathname}
@@ -250,6 +271,8 @@ export function SiteHeader({ pathname, config, searchIndex }: HeaderProps & { pa
         }}
       />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} index={searchIndex} />
+        </>
+      )}
     </>
   );
 }

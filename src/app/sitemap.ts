@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { getAcademies, getAcademyOfferings, getCourses, getNotices } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const institute = ["", "/about", "/academics", "/courses", "/admissions", "/affiliation", "/academies", "/notices", "/research", "/student-life", "/gallery", "/downloads", "/contact"];
+  const institute = ["", "/about", "/academics", "/courses", "/admissions", "/affiliation", "/academies", "/notices", "/research", "/student-life", "/gallery", "/downloads", "/contact", "/privacy", "/terms"];
   const academy = ["", "/about", "/courses", "/admissions", "/campus", "/learning-modes", "/faculty", "/student-life", "/news", "/gallery", "/faqs", "/contact"].map((p) => `/mukkam${p}`);
   return [
     ...[...institute, ...academy].map((p) => ({ url: `${site.url}${p}` })),

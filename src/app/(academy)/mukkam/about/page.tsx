@@ -30,7 +30,7 @@ export default function AcademyAboutPage() {
 
       <Section>
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <Photo src="/images/stock/lecture-students.jpg" label="Mukkam campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
+          <Photo src="/images/stock/kerala-campus-palms.jpg" label="Mukkam campus" className="aspect-[4/3]" sizes="(min-width:1024px) 50vw, 100vw" />
           <div>
             <Eyebrow>Overview</Eyebrow>
             <h2 className="mt-4 font-display text-3xl leading-tight font-medium tracking-[-0.03em] text-ink-950 sm:text-4xl">Theory in the classroom. Skill in the practical room.</h2>

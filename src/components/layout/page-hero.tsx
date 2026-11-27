@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Eyebrow } from "@/components/ui/primitives";
+import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 /** Dark inset hero used on every inner page — keeps the header treatment consistent. */
@@ -23,8 +24,19 @@ export function PageHero({
   className?: string;
 }) {
   const crumbs = [{ label: "Home", href: "/" }, ...breadcrumbs];
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.label,
+      ...(c.href && i < crumbs.length - 1 ? { item: `${site.url}${c.href}` } : {}),
+    })),
+  };
   return (
     <div className="px-2 pt-2 sm:px-3 sm:pt-3">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <section className={cn("relative overflow-hidden rounded-[28px] bg-ink-950 text-white", className)}>
         <div className="pointer-events-none absolute -top-40 right-[-10%] size-[36rem] rounded-full bg-gold-400/[0.08] blur-3xl" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-5 pt-28 pb-12 sm:px-8 sm:pt-36 sm:pb-16">

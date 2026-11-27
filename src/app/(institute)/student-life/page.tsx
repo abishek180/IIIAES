@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 const highlights = [
   { img: "/images/stock/acupuncture-treatment.jpg", title: "Practical sessions", text: "Regular hands-on sessions in small groups, guided by faculty." },
-  { img: "/images/stock/workshop.jpg", title: "Workshops", text: "Specialised workshops on techniques, case management and allied topics." },
-  { img: "/images/stock/graduation.jpg", title: "Academic events", text: "Seminars, orientation programmes and academic celebrations." },
-  { img: "/images/stock/seminar.jpg", title: "Community outreach", text: "Awareness programmes and supervised community health activities." },
+  { img: "/images/stock/classroom-teacher.jpg", title: "Workshops", text: "Specialised workshops on techniques, case management and allied topics." },
+  { img: "/images/stock/onam-celebration.jpg", title: "Celebrations", text: "Onam, orientation days and certificate ceremonies, celebrated together." },
+  { img: "/images/stock/seminar-speaker.jpg", title: "Community outreach", text: "Awareness programmes and supervised community health activities." },
 ];
 
 export default function StudentLifePage() {

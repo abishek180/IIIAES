@@ -9,7 +9,10 @@ export const site = {
   shortName: "IIIAES",
   description:
     "International Institute of Indian Acupuncture Science (IIIAES) — academic programmes, admissions, notices and affiliated academies in acupuncture science.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // Set NEXT_PUBLIC_SITE_URL to the final domain (e.g. https://www.iiiaes.in). On Vercel the production domain is used automatically.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
   address: {
     line1: "Mukkam", // PLACEHOLDER — full street address pending
     city: "Kozhikode",
@@ -27,6 +30,7 @@ export const site = {
   mapEmbed:
     "https://maps.google.com/maps?q=Mukkam%2C%20Kozhikode%2C%20Kerala&z=14&output=embed",
   mapLink: "https://maps.google.com/?q=Mukkam,Kozhikode,Kerala",
+  // Links with href "#" are hidden until the real URLs are added.
   social: [
     // PLACEHOLDER — official social links pending
     { label: "Instagram", href: "#" },
@@ -105,6 +109,6 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
 ];
 
 export const legalLinks: NavLink[] = [
-  { label: "Privacy Policy", href: "#" }, // PLACEHOLDER — documents pending
-  { label: "Terms of Use", href: "#" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Use", href: "/terms" },
 ];
