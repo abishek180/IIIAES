@@ -171,6 +171,10 @@ export type HeroSlide = {
   media: HeroMedia;
   /** Short label shown beside the slide controls, e.g. "Campus, Kozhikode" */
   caption?: string;
+  /** Accordion hero: panel heading, supporting text and link */
+  title?: string;
+  text?: string;
+  cta?: NavLink;
 };
 
 export type HeroContent = {

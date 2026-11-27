@@ -50,10 +50,21 @@ export function FounderFeature({
         )}
 
         {leader.message ? (
-          <blockquote className="mt-8 border-l-2 border-gold-400 pl-5">
-            <Quote className="size-6 text-gold-500" aria-hidden />
-            <p className={cn("mt-3 font-display text-xl leading-snug sm:text-2xl", dark ? "text-white/90" : "text-ink-800")}>{leader.message}</p>
-          </blockquote>
+          <figure className="mt-8">
+            <Quote className="size-7 text-gold-400" aria-hidden />
+            <blockquote className={cn("mt-4 space-y-4 border-l-2 border-gold-400 pl-5 text-base leading-relaxed sm:text-lg", dark ? "text-white/85" : "text-ink-700")}>
+              {leader.message.map((para, i) =>
+                i === leader.message!.length - 1 ? (
+                  <p key={i} className={cn("font-display text-xl leading-snug font-medium sm:text-2xl", dark ? "text-gold-300" : "text-gold-700")}>
+                    {para}
+                  </p>
+                ) : (
+                  <p key={i}>{para}</p>
+                ),
+              )}
+            </blockquote>
+            <figcaption className={cn("mt-5 pl-5 text-sm font-semibold", dark ? "text-white" : "text-ink-950")}>— {leader.name}</figcaption>
+          </figure>
         ) : (
           <p className={cn("mt-8 max-w-xl text-base leading-relaxed sm:text-lg", dark ? "text-white/75" : "text-ink-600")}>{intro}</p>
         )}

@@ -32,7 +32,7 @@ import {
 import { AcademyCard, CalendarList, CourseCard, NoticeRow } from "@/components/cards";
 import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
 import { FounderFeature } from "@/components/founder";
-import { coFounder, founder } from "@/content/leadership";
+import { founder } from "@/content/leadership";
 import { AffiliationCta, ContactSection, GalleryGrid } from "@/components/sections";
 import { ArrowLink, ButtonLink, Container, Em, Eyebrow, Photo, Section, SectionHeading } from "@/components/ui/primitives";
 
@@ -54,69 +54,67 @@ export default function HomePage() {
     <>
       {/* 1–3. Announcement · Header (layout) · Hero — slides and copy come from the CMS (content/hero.ts) */}
       <div className="px-2 pt-2 sm:px-3 sm:pt-3">
-        <HeroCarousel slides={hero.slides} interval={hero.interval} tone={hero.theme} className="rounded-[28px] bg-paper text-ink-950">
-          <Container className="grid grid-cols-1 gap-10 pt-28 pb-24 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32">
+        <HeroCarousel slides={hero.slides} interval={hero.interval} tone={hero.theme} className="rounded-[28px] bg-ink-950 text-white">
+          <Container className="grid grid-cols-1 gap-8 pt-36 pb-24 sm:pt-44 sm:pb-10 lg:grid-cols-[1fr_auto] lg:items-end lg:pt-52 lg:pb-14">
             <div className="max-w-3xl min-w-0">
-              {headline && (
-                <Link
-                  href={`/notices/${headline.slug}`}
-                  className="group animate-fade-up inline-flex max-w-full items-center gap-2.5 rounded-full bg-white/80 py-1 pr-1 pl-3 text-xs ring-1 ring-ink-950/[0.06] backdrop-blur transition-colors hover:bg-white sm:text-sm"
-                >
-                  <span className="relative flex size-2 shrink-0">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-500 opacity-60" />
-                    <span className="relative inline-flex size-2 rounded-full bg-gold-500" />
-                  </span>
-                  <span className="truncate text-ink-700">{headline.title}</span>
-                  <span className="flex shrink-0 items-center gap-1 rounded-full bg-ink-950 px-2.5 py-1 font-semibold text-white">
-                    View <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                  </span>
-                </Link>
-              )}
+              <div className="animate-fade-up flex flex-wrap items-center gap-2">
+                {headline && (
+                  <Link
+                    href={`/notices/${headline.slug}`}
+                    className="group inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/15 bg-white/10 py-1 pr-1 pl-3 text-xs backdrop-blur transition-colors hover:bg-white/20 sm:text-sm"
+                  >
+                    <span className="relative flex size-2 shrink-0">
+                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-400 opacity-60" />
+                      <span className="relative inline-flex size-2 rounded-full bg-gold-400" />
+                    </span>
+                    <span className="truncate text-white/90">{headline.title}</span>
+                    <span className="flex shrink-0 items-center gap-1 rounded-full bg-white px-2.5 py-1 font-semibold text-ink-950">
+                      View <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                    </span>
+                  </Link>
+                )}
+              </div>
 
-              <h1 className="mt-8 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.4rem]">
+              <h1 className="mt-6 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.2rem]">
                 <span className="animate-fade-up stagger-1 block">{hero.title.lead}</span>{" "}
-                <Em className="animate-fade-up stagger-2 block text-gold-600">
+                <Em tone="dark" className="animate-fade-up stagger-2 block text-gold-400">
                   {hero.title.accent}
                   {hero.title.trail && ` ${hero.title.trail}`}
                 </Em>
               </h1>
-              <p className="animate-fade-up stagger-3 mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg">{hero.description}</p>
-              <div className="animate-fade-up stagger-4 mt-9 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={hero.primary.href} variant="dark">
-                  {hero.primary.label}
-                </ButtonLink>
-                <ButtonLink href={hero.secondary.href} newTab={hero.secondary.newTab} variant="light" className="ring-1 ring-ink-950/10">
+              <p className="animate-fade-up stagger-3 mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">{hero.description}</p>
+              <div className="animate-fade-up stagger-4 mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href={hero.primary.href}>{hero.primary.label}</ButtonLink>
+                <ButtonLink href={hero.secondary.href} newTab={hero.secondary.newTab} variant="outline-light">
                   {hero.secondary.label}
                 </ButtonLink>
               </div>
-              <Link href="/mukkam" className="group animate-fade-up stagger-4 mt-6 flex items-start gap-2 text-sm font-medium text-ink-600 transition-colors hover:text-ink-950 sm:inline-flex sm:items-center">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-gold-600 sm:mt-0" aria-hidden />
+              <Link href="/mukkam" className="group animate-fade-up stagger-4 mt-6 flex items-start gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white sm:inline-flex sm:items-center">
+                <MapPin className="mt-0.5 size-4 shrink-0 text-gold-400 sm:mt-0" aria-hidden />
                 <span>
-                  Studying in Kozhikode? Visit the <span className="text-ink-950 underline decoration-gold-500 underline-offset-4">Mukkam Academy</span>
+                  Studying in Kozhikode? Visit the <span className="text-white underline decoration-gold-400 underline-offset-4">Mukkam Academy</span>
                   <ArrowRight className="ml-1 inline size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
                 </span>
               </Link>
             </div>
+            <HeroControls className="self-start justify-self-start lg:self-end" />
           </Container>
 
-          {/* Hero facts + slide controls */}
-          <Container className="pb-20">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <dl className="hidden grid-cols-4 gap-2 sm:grid lg:max-w-4xl lg:flex-1">
-                {[
-                  ["Programmes", "UG to certificate"],
-                  ["Learning modes", "Offline · Online · Hybrid"],
-                  ["Campus", "Mukkam, Kozhikode"],
-                  ["Network", "Affiliated academies"],
-                ].map(([k, v]) => (
-                  <div key={k} className="rounded-2xl bg-white/70 px-4 py-3 ring-1 ring-ink-950/[0.05] backdrop-blur-md">
-                    <dt className="text-[0.7rem] text-ink-500">{k}</dt>
-                    <dd className="mt-0.5 text-sm font-medium text-ink-950">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-              <HeroControls className="self-start lg:self-end" />
-            </div>
+          {/* Hero facts */}
+          <Container className="hidden pb-20 sm:block">
+            <dl className="grid grid-cols-4 gap-2">
+              {[
+                ["Programmes", "UG to certificate"],
+                ["Learning modes", "Offline · Online · Hybrid"],
+                ["Campus", "Mukkam, Kozhikode"],
+                ["Network", "Affiliated academies"],
+              ].map(([k, v]) => (
+                <div key={k} className="rounded-2xl bg-ink-950/40 px-4 py-3 ring-1 ring-white/15 backdrop-blur-md">
+                  <dt className="text-[0.7rem] text-white/70">{k}</dt>
+                  <dd className="mt-0.5 text-sm font-medium text-white">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </Container>
         </HeroCarousel>
       </div>
@@ -189,7 +187,6 @@ export default function HomePage() {
           <FounderFeature
             leader={founder}
             intro={`IIIAES was founded by ${founder.name} with one aim: to give acupuncture science the structure, rigour and practical depth of a modern academic discipline.`}
-            partners={[coFounder]}
             link={{ label: "Leadership & our story", href: "/about#leadership" }}
           />
         </Container>
@@ -272,7 +269,7 @@ export default function HomePage() {
             />
             <ol className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-3">
               {[
-                { n: "01", img: "/images/stock/classroom-teacher.jpg", title: "Theoretical education", text: "Principles of acupuncture, anatomy, physiology and diagnostic methods, taught in structured modules." },
+                { n: "01", img: "/images/campus/students-studying.jpg", title: "Theoretical education", text: "Principles of acupuncture, anatomy, physiology and diagnostic methods, taught in structured modules." },
                 { n: "02", img: "/images/stock/acupuncture-treatment.jpg", title: "Practical learning", text: "Point location, techniques and procedures practised under faculty supervision." },
                 { n: "03", img: "/images/stock/acupuncture-needles.jpg", title: "Clinical training", text: "Supervised clinical exposure and case work, where applicable to the programme." },
               ].map((s) => (

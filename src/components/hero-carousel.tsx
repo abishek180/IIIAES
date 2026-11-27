@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { HeroSlide } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -170,16 +170,25 @@ export function HeroControls({ className }: { className?: string }) {
   if (!ctx || ctx.slides.length < 2) return null;
   const { slides, index, interval, paused, tone, go, togglePause } = ctx;
   const light = tone === "light";
+  const prev = () => go((index - 1 + slides.length) % slides.length);
+  const next = () => go((index + 1) % slides.length);
+  const arrow = cn(
+    "grid size-8 shrink-0 place-items-center rounded-full transition-colors",
+    light ? "bg-ink-950/[0.06] text-ink-950 hover:bg-ink-950/[0.12]" : "bg-white/15 text-white hover:bg-white/25",
+  );
 
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-3 rounded-full py-1.5 pr-1.5 pl-4 text-xs font-medium backdrop-blur-md",
+        "inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-1.5 text-xs font-medium backdrop-blur-md",
         light ? "bg-white/75 text-ink-800 ring-1 ring-ink-950/[0.06]" : "bg-ink-950/40 text-white ring-1 ring-white/15",
         className,
       )}
     >
-      <span className="min-w-0 truncate" aria-live="polite">
+      <button type="button" onClick={prev} className={arrow} aria-label="Previous slide">
+        <ChevronLeft className="size-4" aria-hidden />
+      </button>
+      <span className="min-w-0 truncate px-1" aria-live="polite">
         {slides[index].caption ?? `Slide ${index + 1}`}
       </span>
       <span className="flex items-center gap-1.5" role="group" aria-label="Choose slide">
@@ -202,6 +211,9 @@ export function HeroControls({ className }: { className?: string }) {
           </button>
         ))}
       </span>
+      <button type="button" onClick={next} className={arrow} aria-label="Next slide">
+        <ChevronRight className="size-4" aria-hidden />
+      </button>
       <button
         type="button"
         onClick={togglePause}

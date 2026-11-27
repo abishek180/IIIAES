@@ -10,12 +10,38 @@ import type { HeroContent } from "@/lib/types";
  *  - Order = display order. One slide = no rotation. `interval` controls how long each slide shows.
  */
 export const instituteHero: HeroContent = {
-  theme: "light",
-  interval: 7000,
+  theme: "dark",
+  interval: 6000,
+  // Accordion panels (homepage). Each panel: media (image or video) + caption (collapsed label) + title, text and link (expanded).
   slides: [
-    { media: { type: "image", src: "/images/campus/iiiaes-campus.jpg", alt: "The IIIAES campus building at dusk", focus: "60% center" }, caption: "Our campus" },
-    { media: { type: "image", src: "/images/stock/acupuncture-treatment.jpg", alt: "Supervised practical acupuncture session" }, caption: "Practical training" },
-    { media: { type: "image", src: "/images/campus/study-hall.jpg", alt: "The IIIAES study hall with tiered seating and a projection screen" }, caption: "Study hall" },
+    {
+      media: { type: "image", src: "/images/campus/iiiaes-campus.jpg", alt: "The IIIAES campus building at dusk", focus: "60% center" },
+      caption: "Our campus",
+      title: "A campus built for focus",
+      text: "A modern home for acupuncture education in Mukkam, Kozhikode.",
+      cta: { label: "About IIIAES", href: "/about" },
+    },
+    {
+      media: { type: "image", src: "/images/campus/study-hall.jpg", alt: "The IIIAES study hall with tiered seating and a projection screen" },
+      caption: "Study hall",
+      title: "Learn in the study hall",
+      text: "Tiered seating, projection and audio for lectures and seminars.",
+      cta: { label: "Academics", href: "/academics" },
+    },
+    {
+      media: { type: "image", src: "/images/stock/acupuncture-treatment.jpg", alt: "Supervised practical acupuncture session" },
+      caption: "Hands-on practice",
+      title: "Practice from the first term",
+      text: "Supervised practical sessions build correct technique and confidence.",
+      cta: { label: "Explore courses", href: "/courses" },
+    },
+    {
+      media: { type: "image", src: "/images/campus/consultation-room.jpg", alt: "Consultation room for supervised clinical training" },
+      caption: "Clinical exposure",
+      title: "Supervised clinical training",
+      text: "A calm consultation room where theory meets real practice.",
+      cta: { label: "Admissions", href: "/admissions" },
+    },
   ],
   title: { lead: "Rooted in tradition.", accent: "Advanced through science." },
   description:

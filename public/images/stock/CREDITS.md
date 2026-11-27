@@ -8,11 +8,9 @@ To replace one, overwrite the file with a real photo of the same name.
 | File | Shows | Photographer | Source |
 | --- | --- | --- | --- |
 | kerala-building.jpg | Tiled-roof building with palms | Dipu Chandran | https://unsplash.com/photos/oXmub4igb6c |
-| classroom-teacher.jpg | Teacher with students in a classroom | CIMT HOOGHLY | https://unsplash.com/photos/I4lLt9g8i3k |
 | students-writing.jpg | Students writing in class | Aswin Thomas Bony | https://unsplash.com/photos/SPO0ST4nVbY |
 | library-reading.jpg | Student reading in a library | Praveen Gupta | https://unsplash.com/photos/YhfxJpa_Ch0 |
 | certificate-day.jpg | Group with certificates | Rishikesh Yogis Yogshala | https://unsplash.com/photos/lIScHlDacKA |
-| seminar-speaker.jpg | Speaker at a podium | Ratul Puri | https://unsplash.com/photos/XEIiUU60Wcw |
 | acupuncture-needles.jpg | Acupuncture needles (close-up) | Katherine Hanlon | https://unsplash.com/photos/QgcdtM9rA5s |
 | acupuncture-treatment.jpg | Acupuncture treatment (hands) | Antonika Chanel | https://unsplash.com/photos/jmRbgqXLCI0 |
 | anatomy-model.jpg | Anatomy model | Nhia Moua | https://unsplash.com/photos/F4cJtI7HCMw |
@@ -20,4 +18,4 @@ To replace one, overwrite the file with a real photo of the same name.
 
 ## Institution photography
 
-`/images/campus/iiiaes-campus.jpg` — IIIAES campus building, supplied by the institution.
+`/images/campus/` — campus building, study hall, consultation room, students-studying and standing-ovation photos, supplied by the institution.

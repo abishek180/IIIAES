@@ -92,7 +92,7 @@ export const facilities = [
   { title: "Consultation room", text: "A calm, private consultation room where students gain supervised clinical exposure.", img: "/images/campus/consultation-room.jpg" },
   { title: "Anatomy & study aids", text: "Models and visual aids to support anatomy and physiology learning.", img: "/images/stock/anatomy-model.jpg" },
   { title: "Library & reading space", text: "Reference books and a quiet space for self-study.", img: "/images/stock/library-reading.jpg" },
-  { title: "Seminar space", text: "Room for workshops, guest sessions and academic events.", img: "/images/stock/seminar-speaker.jpg" },
+  { title: "Seminar space", text: "Room for workshops, guest sessions and academic events.", img: "/images/campus/standing-ovation.jpg" },
 ];
 
 /** PLACEHOLDER — faculty names, photos and qualifications must be supplied by the academy. */
@@ -111,7 +111,7 @@ export const whyStudy = [
 ];
 
 export const activities = [
-  { title: "Practical workshops", text: "Hands-on workshops on techniques and case handling.", img: "/images/stock/seminar-speaker.jpg" },
+  { title: "Practical workshops", text: "Hands-on workshops on techniques and case handling.", img: "/images/campus/standing-ovation.jpg" },
   { title: "Clinical sessions", text: "Supervised sessions that build real-world confidence.", img: "/images/stock/acupuncture-treatment.jpg" },
   { title: "Celebrations", text: "Orientation days, certificate ceremonies and festival celebrations.", img: "/images/stock/certificate-day.jpg" },
 ];

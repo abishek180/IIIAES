@@ -9,8 +9,8 @@ export type Leader = {
   photo?: string;
   /** CSS object-position for the portrait crop */
   focus?: string;
-  /** Leader's message in their own words (rendered as a quote). Leave undefined until supplied. */
-  message?: string;
+  /** Leader's message in their own words, one string per paragraph (rendered as a quote). Leave undefined until supplied. */
+  message?: string[];
 };
 
 export const founder: Leader = {
@@ -19,7 +19,11 @@ export const founder: Leader = {
   qualifications: "BASc · MSc Psy · MDip Acu",
   photo: "/images/people/suneer-ck.png",
   focus: "center 18%",
-  message: undefined, // PLACEHOLDER — awaiting the Founder's message
+  message: [
+    "I believe good health is a blessing every human being deserves. My mission is to make healing and health knowledge accessible to all — by treating those in need and teaching those who wish to heal others.",
+    "Through IIIAES, I hope to nurture a generation of skilled healers and contribute towards a healthier world, free from unnecessary suffering.",
+    "My vision is simple: Heal more. Teach more. Serve humanity.",
+  ],
 };
 
 export const coFounder: Leader = {
