@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, CalendarDays, Clock, Laptop, MapPin, MonitorPlay, Quote, School } from "lucide-react";
 import { getAcademyOfferings, getGallery, getHero, getNotices } from "@/lib/data";
-import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
+import { HeroCarousel } from "@/components/hero-carousel";
 import { formatDate } from "@/lib/utils";
 import { academyContact, academySite, activities, facilities, faculty, learningModes, whyStudy } from "@/content/academy";
 import { CourseCard, NoticeRow, Steps } from "@/components/cards";
@@ -29,7 +29,6 @@ export default function AcademyHomePage() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
                   <MapPin className="size-3.5 text-gold-400" aria-hidden /> Mukkam, Kozhikode · Kerala
                 </span>
-                <HeroControls />
               </div>
               <h1 className="mt-6 font-display text-[2.85rem] leading-[0.98] font-medium tracking-[-0.045em] text-balance sm:text-7xl lg:text-[5.2rem]">
                 {hero.title.lead} <Em tone="dark">{hero.title.accent}</Em>

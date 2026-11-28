@@ -30,7 +30,7 @@ import {
   getNotices,
 } from "@/lib/data";
 import { AcademyCard, CalendarList, CourseCard, NoticeRow } from "@/components/cards";
-import { HeroCarousel, HeroControls } from "@/components/hero-carousel";
+import { HeroCarousel } from "@/components/hero-carousel";
 import { FounderFeature } from "@/components/founder";
 import { founder } from "@/content/leadership";
 import { AffiliationCta, ContactSection, GalleryGrid } from "@/components/sections";
@@ -97,7 +97,6 @@ export default function HomePage() {
                 </span>
               </Link>
             </div>
-            <HeroControls className="self-start justify-self-start lg:self-end" />
           </Container>
 
           {/* Hero facts */}

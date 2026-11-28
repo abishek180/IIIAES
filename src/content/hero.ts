@@ -15,20 +15,6 @@ export const instituteHero: HeroContent = {
   // Accordion panels (homepage). Each panel: media (image or video) + caption (collapsed label) + title, text and link (expanded).
   slides: [
     {
-      media: { type: "image", src: "/images/campus/iiiaes-campus.jpg", alt: "The IIIAES campus building at dusk", focus: "60% center" },
-      caption: "Our campus",
-      title: "A campus built for focus",
-      text: "A modern home for acupuncture education in Mukkam, Kozhikode.",
-      cta: { label: "About IIIAES", href: "/about" },
-    },
-    {
-      media: { type: "image", src: "/images/campus/study-hall.jpg", alt: "The IIIAES study hall with tiered seating and a projection screen" },
-      caption: "Study hall",
-      title: "Learn in the study hall",
-      text: "Tiered seating, projection and audio for lectures and seminars.",
-      cta: { label: "Academics", href: "/academics" },
-    },
-    {
       media: { type: "image", src: "/images/campus/acupuncture-practice.jpg", alt: "A practitioner placing acupuncture needles on a patient's wrist", focus: "center 60%" },
       caption: "Acupuncture practice",
       title: "Precision in every point",
